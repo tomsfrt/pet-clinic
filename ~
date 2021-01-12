@@ -1,0 +1,65 @@
+# Please edit the object below. Lines beginning with a '#' will be ignored,
+# and an empty file will abort the edit. If an error occurs while saving this file will be
+# reopened with the relevant failures.
+#
+# servicemonitors.monitoring.coreos.com "petclinic-monitor" was not valid:
+# * : Invalid value: "The edited file failed validation": ValidationError(ServiceMonitor.spec.namespaceSelector.any): invalid type for com.coreos.monitoring.v1.ServiceMonitor.spec.namespaceSelector.any: got "string", expected "boolean"
+#
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  creationTimestamp: "2021-01-12T19:23:20Z"
+  generation: 1
+  labels:
+    app: spring-petclinic
+    app.kubernetes.io/component: prometheus
+    app.kubernetes.io/instance: prometheus
+    app.kubernetes.io/name: kube-prometheus
+  managedFields:
+  - apiVersion: monitoring.coreos.com/v1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:labels:
+          .: {}
+          f:app: {}
+      f:spec:
+        .: {}
+        f:endpoints: {}
+        f:namespaceSelector:
+          .: {}
+          f:any: {}
+        f:selector:
+          .: {}
+          f:matchLabels:
+            .: {}
+            f:app: {}
+    manager: octant
+    operation: Apply
+    time: "2021-01-12T19:23:20Z"
+  - apiVersion: monitoring.coreos.com/v1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:labels:
+          f:app.kubernetes.io/component: {}
+          f:app.kubernetes.io/instance: {}
+          f:app.kubernetes.io/name: {}
+    manager: kubectl
+    operation: Update
+    time: "2021-01-12T22:17:39Z"
+  name: petclinic-monitor
+  namespace: prometheus
+  resourceVersion: "905306"
+  selfLink: /apis/monitoring.coreos.com/v1/namespaces/prometheus/servicemonitors/petclinic-monitor
+  uid: 4724db56-d088-4194-92ca-05d6bc679609
+spec:
+  endpoints:
+  - interval: 10s
+    path: /actuator/prometheus
+    port: "8080"
+  namespaceSelector:
+    any: e2e-workshop-w01-s001
+  selector:
+    matchLabels:
+      app: spring-petclinic
